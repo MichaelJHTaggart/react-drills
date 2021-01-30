@@ -11,6 +11,10 @@ class NewTask extends Component {
         this.handleAdd = this.handleAddAdd.bind(this);
     }
 
+    handleInputChange(value) {
+        this.setState({ input: value });
+    }
+
     handleAdd() {
         this.props.add(this.state.input);
         this.setState({ input: "" });
