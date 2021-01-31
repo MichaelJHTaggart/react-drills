@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import axios from "axios"
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      pokemon: ""
+    };
+  }
+
+  componentDidMount() {
+    axios.get("https://pokeapi.co/api/v2/pokemon").then(response => {
+      this.setState({
+        pokemon: response.data.results[0]
+      });
+    });
+  }
+
+  render() {
+
+    return (
+      <div>
+        <h1>{this.state.pokemon.name}</h1>
+        <h2>{this.state.pokemon.url}</h2>
+
+      </div>
+    );
+  }
 }
 
 export default App;
