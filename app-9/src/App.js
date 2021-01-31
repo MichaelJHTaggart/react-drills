@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import router from "./router"
+import { Link } from "react-router-dom"
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
           <Link to="details">Details</Link>
         </ul>
         {router}
+      </nav>
     </div>
   );
 }
